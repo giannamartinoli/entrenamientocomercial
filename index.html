@@ -624,6 +624,8 @@ section.chapter:nth-child(even) {
   font-style: italic;
   margin: 0;
 }
+.ba-col.bad p { color: var(--grey-800); }
+.ba-col.good p { color: var(--white); }
 
 /* Phrase bank */
 .phrase-bank {
@@ -638,6 +640,102 @@ section.chapter:nth-child(even) {
   font-weight: 500;
   font-style: italic;
   color: var(--black);
+}
+
+/* Value bank (3-column from the team exercise) */
+.value-bank-intro {
+  margin: 48px 0 28px;
+}
+.value-bank-intro h3 {
+  margin-bottom: 16px;
+}
+.value-bank {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 32px 0 16px;
+  max-width: 100%;
+}
+.value-column {
+  background: var(--white);
+  border: 1px solid var(--grey-200);
+  display: flex;
+  flex-direction: column;
+}
+.value-column .value-col-header {
+  background: var(--black);
+  color: var(--white);
+  padding: 24px 22px;
+  border-bottom: 3px solid var(--orange);
+}
+.value-column .value-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 8px;
+  display: block;
+}
+.value-column h4 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.value-column .value-q {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+}
+.value-column ol.value-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: vbitem;
+}
+.value-column ol.value-list li {
+  counter-increment: vbitem;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--grey-200);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--grey-800);
+  position: relative;
+  margin: 0;
+}
+.value-column ol.value-list li:last-child { border-bottom: none; }
+.value-column ol.value-list li::before {
+  content: counter(vbitem, decimal-leading-zero);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  display: block;
+  margin-bottom: 6px;
+}
+.value-column ol.value-list li strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.value-bank-credit {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--grey-600);
+  text-align: right;
+  margin-top: 8px;
+  font-style: italic;
 }
 
 /* Golden rules (final section) */
@@ -762,6 +860,10 @@ section.chapter:nth-child(even) {
 .footer .footer-credit strong { color: var(--white); }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .value-bank { grid-template-columns: 1fr; max-width: 700px; margin-left: auto; margin-right: auto; }
+}
+
 @media (max-width: 768px) {
   .top-nav { padding: 12px 20px; }
   .top-nav .nav-title { display: none; }
@@ -776,6 +878,7 @@ section.chapter:nth-child(even) {
   .footer .footer-credit { text-align: left; }
   .step { grid-template-columns: 50px 1fr; gap: 16px; }
   .step::before { font-size: 22px; }
+  .value-bank { grid-template-columns: 1fr; }
 }
 
 /* Print styles */
@@ -1062,6 +1165,69 @@ section.chapter:nth-child(even) {
       <p>Para un municipio pequeño, el equipo no se limitó a entregar la licencia e instalar la solución. Preparó además un banner, una nota de prensa y un sticker de campaña para impulsar el lanzamiento.</p>
       <p>Ese "extra" generó visibilidad, satisfacción y abrió nuevas oportunidades con otros municipios. Incluso clientes pequeños pueden convertirse en generadores de referencia y oportunidades futuras si se los sorprende positivamente.</p>
     </div>
+
+    <div class="value-bank-intro">
+      <h3>Banco de valor colectivo — armado por el equipo</h3>
+      <p>Durante la capacitación, la dirección comercial coordinó un ejercicio colectivo: el equipo entero completó una tabla con los valores concretos que SoftGuard entrega en cada una de las tres capas. El resultado es este banco — pensado como inspiración rápida al armar un pitch, una propuesta o una conversación de discovery.</p>
+      <p>Cada uno de estos puntos puede ser un gancho de conversación. La idea no es recitarlos todos en una reunión, sino tener el repertorio a mano para elegir el que mejor le hable al cliente que tenés enfrente.</p>
+    </div>
+
+    <div class="value-bank">
+
+      <div class="value-column">
+        <div class="value-col-header">
+          <span class="value-tag">Capa 01</span>
+          <h4>Valor Funcional</h4>
+          <p class="value-q">¿Qué hace SoftGuard concretamente? Impacto operativo, económico y técnico.</p>
+        </div>
+        <ol class="value-list">
+          <li><strong>Automatización operativa</strong>Reduce tiempos muertos, minimiza tareas manuales y mejora la eficiencia general del monitoreo, despacho y atención de eventos.</li>
+          <li><strong>Plataforma unificada</strong>Alarmas, video, GPS, accesos, apps móviles, guardias y técnicos en un solo sistema. Sin múltiples plataformas desconectadas.</li>
+          <li><strong>Escalabilidad</strong>El cliente crece incorporando nuevos módulos, apps o verticales sin migrar de sistema.</li>
+          <li><strong>Generación de ingresos recurrentes</strong>Apps, monitoreo, analítica y servicios cloud que transforman negocios tradicionales en modelos predecibles y rentables.</li>
+          <li><strong>Control y trazabilidad</strong>Cada acción queda registrada: operadores, eventos, tiempos de respuesta. Auditorías más sólidas y mejor calidad de servicio.</li>
+          <li><strong>Movilidad y acceso multiplataforma</strong>Web y móvil desde cualquier lugar, para supervisores, técnicos, clientes y directivos en tiempo real.</li>
+          <li><strong>Adaptación a múltiples verticales</strong>Gobiernos, urbanizaciones, industrias, retail, logística, educación, salud y más. No es solo para centrales de monitoreo.</li>
+        </ol>
+      </div>
+
+      <div class="value-column">
+        <div class="value-col-header">
+          <span class="value-tag">Capa 02</span>
+          <h4>Valor Emocional</h4>
+          <p class="value-q">¿Qué siente el cliente al usar SoftGuard?</p>
+        </div>
+        <ol class="value-list">
+          <li><strong>Control y tranquilidad</strong>El cliente puede visualizar su operación en tiempo real y reaccionar rápido ante cualquier incidente.</li>
+          <li><strong>Modernización y evolución</strong>Implementar SoftGuard genera la sensación de dejar atrás procesos obsoletos y dar un salto tecnológico real.</li>
+          <li><strong>Seguridad en momentos críticos</strong>Cuando ocurre una emergencia, el cliente sabe que tiene herramientas profesionales para actuar.</li>
+          <li><strong>Orgullo diferencial</strong>Las empresas sienten orgullo de mostrar una plataforma moderna y apps propias frente a sus clientes y competidores.</li>
+          <li><strong>Reducción del estrés operativo</strong>Automatizar y centralizar información reduce el desgaste diario de operadores, supervisores y gerentes.</li>
+          <li><strong>Respaldo permanente</strong>El cliente siente que no está solo: hay una empresa comprometida detrás de la plataforma.</li>
+          <li><strong>Confianza para decidir</strong>Indicadores en tiempo real permiten a directivos tomar decisiones con más seguridad y menos incertidumbre.</li>
+        </ol>
+      </div>
+
+      <div class="value-column">
+        <div class="value-col-header">
+          <span class="value-tag">Capa 03</span>
+          <h4>Valor Relacional</h4>
+          <p class="value-q">¿Qué vínculo construye SoftGuard con el cliente?</p>
+        </div>
+        <ol class="value-list">
+          <li><strong>Acompañamiento constante</strong>Capacitación, estrategia comercial, implementación y evolución del negocio, no solo soporte técnico.</li>
+          <li><strong>Relación de partnership</strong>SoftGuard actúa como socio tecnológico y comercial, no solo como proveedor.</li>
+          <li><strong>Cercanía y accesibilidad</strong>Contacto directo con equipos técnicos, comerciales y de soporte. Respuesta real, no bots. Especialmente en países con presencia de Oficinas Regionales, Canales y BP.</li>
+          <li><strong>Compromiso con el éxito del cliente</strong>El foco está en que el cliente venda más, fidelice y mejore su operación. No solo en el sistema.</li>
+          <li><strong>Confianza a largo plazo</strong>Relaciones que se desarrollan durante años mediante soporte, evolución tecnológica y acompañamiento continuo.</li>
+          <li><strong>Comunidad internacional</strong>El cliente pasa a formar parte de una red regional de empresas, partners y oficinas que comparten experiencias y oportunidades.</li>
+          <li><strong>Educación y transferencia de conocimiento</strong>Capacitaciones constantes sobre productividad, tendencias, nuevas tecnologías y mejores prácticas de la industria.</li>
+        </ol>
+      </div>
+
+    </div>
+
+    <p class="value-bank-credit">Ejercicio colectivo coordinado por la Dirección Comercial · Mayo 2026</p>
   </div>
 </section>
 
